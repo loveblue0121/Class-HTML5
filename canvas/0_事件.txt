@@ -1,0 +1,80 @@
+事件聆聽功能
+devtools
+事件(event-driven language)
+    1. 建立事件聆聽功能
+        一個物件 + 一個事件 + 一個處理函數
+        (1). 寫在.html <<盡量少用
+            <body onload="doFirst()"></body>
+            物件   事件    處理函數
+            <button onclick="doNothing()"></button>
+        (2). 寫在.js
+            window.onload = doFirst; 不要+小括號
+            window.onload = function(){};
+            物件    事件     處理函數
+            物件 的 屬性   =
+            按鈕物件.onclick = doNothing;
+        (3). 寫在.js (W3C的推薦方式)
+            window.addEventListener("load", doFirst);
+            load, click      | event   較新的寫法(不用加on)
+            onload, onclick  |event handler 較舊的寫法(用在Dom 0)
+    2. 事件分類
+        (1). 輸入裝置(滑鼠)
+             click | mousedown | mouseup | dblclick | contextmenu(右鍵)
+             mousemove(使用要小心)
+             mouseover | mouseout(支援冒泡事件)
+             mouseenter | mouseleave(沒有支援冒泡事件)
+
+        (2). 鍵盤
+             keypress | keydown | keyup
+
+        (3). 瀏覽器
+             load | unload | beforeunload
+             paste | copy | cut
+             scroll | resize(window)
+        (4). 表單
+             submit | reset
+             focus | blur
+             change | select | input
+             確認是否reset
+             theForm.onreset = function(){
+                 return confirm("Are you sure you want to reset the form?")
+             }
+    3. 事件物件的屬性和方法
+    4. 引用事件物件
+
+==========================================================================
+[命名大小寫]
+屬性和方法          | camelCase [ex. addEventListener()]   
+內建物建(class)     | PascalCase [ex. new Date() | new RegExp()]
+事件                | 全部小寫 [ex. readystatechange]
+常數                | 全部大寫 [ex. Math.PI]
+===========================================================================
+.html
+<font size="+5">
+    <p>Hello</p>
+</font>
+
+.css
+    p{
+        font-size: 20px ;
+    }
+.js
+    找到p物件.style.CSS的屬性
+    找到p物件(getElementById).style.fontSize = '20px'
+
+--------------------------------------------------------------------------
+.js
+  -處理HTML標籤本身的屬性
+    [ex.]
+    找到img物件.src= "路徑+檔名";
+    找到img物件.width= 300;
+    某物件.id = "myId";
+    某物件.className = "myClass";
+    找到label物件.htmlFor = "myLabel";
+    找到input物件.value = "hello!";
+
+
+  -處理CSS的屬性
+    [ex.]
+    找到img物件.style.width = "300px";
+    某物件.style.backgroundColor = "red";

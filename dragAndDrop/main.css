@@ -1,0 +1,9 @@
+#dropzone {
+  border: 3px dashed #ccc;
+  width: 500px;
+  padding: 30px 0;
+}
+img {
+  max-width: 350px;
+  max-height: 250px;
+}
